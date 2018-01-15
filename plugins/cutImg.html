@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		label{
+			display: inline-block;
+			padding:8px 12px;
+			background: #4395ff;
+			color:#fff;
+			border-radius: 5px; 
+			cursor: pointer;
+		}
+		#natureImg{
+			/*display: none;*/
+		}
+		#cutImg{
+			/*display: none;*/
+		}
+	</style>
+</head>
+<body>
+	<label for="uploadImg">上传图片</label>
+	<input type="file" name="" id="uploadImg" style="display: none" accept="image/jpg,image/jpeg,image/png">
+	<div>
+		<img src="" id="natureImg" >
+		<img src="" id="cutImg">
+	</div>
+	<script type="text/javascript">
+
+		// base64图片 裁剪 图片
+		document.getElementById("uploadImg").onchange = function(e){
+			var file = e.target.files[0];
+
+			var canvas = document.createElement("canvas"),
+				cutImg = document.getElementById("cutImg"),
+				natureImg = document.getElementById("natureImg"),
+				natureWidth,natureHeight;
+			var reader = new FileReader();
+			if(file){
+				reader.onload = function(e){
+					console.log(e.target);
+					natureImg.setAttribute("src",e.target.result);
+
+					natureImg.onload =function(){
+						natureWidth = natureImg.width;
+				 		natureHeight = natureImg.height;
+				 		console.log(natureWidth,natureHeight);
+
+				 		canvas.width = natureWidth*0.5;	// 缩小倍数
+				 		canvas.height = natureHeight*0.5;
+
+				 		var context = canvas.getContext("2d");
+
+				 		context.drawImage(natureImg,0,0,natureWidth,natureHeight,0,0,canvas.width,canvas.height);
+
+				 		var imgData = canvas.toDataURL();	
+
+				 		cutImg.setAttribute("src",imgData);
+
+					}
+					
+				}	
+			}
+			reader.readAsDataURL(file);
+
+			
+
+		}
+	</script>
+</body>
+</html>
