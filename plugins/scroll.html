@@ -1,0 +1,63 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>隐藏导航栏</title>
+    <meta name="renderer" content="webkit">
+    <style type="text/css">
+        ::-webkit-scrollbar {/*隐藏滚轮*/
+            display: none;
+        }
+        .nav{
+            height: 40px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            z-index: 9;
+            overflow-y: hidden;
+            overflow-x: scroll;
+        }
+        .nav ul{
+            display: block;
+            margin:0;
+            padding: 0;
+            width:490px;
+            list-style-type: none;
+        }
+        .nav li{
+            width: 70px;
+            text-align: center;
+            float: left;
+            height: 100%;
+            padding: 5px 10px 0;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            cursor: pointer;
+            z-index: 99;
+        }
+        .nav li span{
+            display: block;
+            height: 32px;
+            line-height: 32px;
+        }
+        .nav li.selected span{
+            color: #3278ee;
+            border-bottom: 3px solid #3278ee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li class="selected"><span>医生</span></li>
+            <li><span>疾病</span></li>
+            <li><span>优惠卷</span></li>
+            <li><span>医院</span></li>
+            <li><span>病例</span></li>
+            <li><span>联系人</span></li>
+            <li><span>挂号</span></li>
+            <li><span>全部</span></li>
+        </ul>
+    </div>
+    
+</body>
