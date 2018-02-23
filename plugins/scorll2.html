@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		body,html{
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		ul,li{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		.nav_wrap{
+			height: 400px;
+			width: 200px;
+			overflow: hidden;
+			border: 1px solid #ccc;
+			margin: 20px auto;
+		}
+		.nav_ul{
+			height: 100%;
+			width: 220px;
+			overflow-y: auto;
+			overflow-x: hidden;
+		}
+		.nav_li{
+			border: 1px solid #ccc;
+			margin: -1px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			font-size: 12px;
+			width: 200px;
+		}
+		.btn_wrap{
+			text-align: center;
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<div class= "nav_wrap">
+		<ul class= "nav_ul">		
+			<li class="nav_li">我是菜单1</li>
+			<li class="nav_li">我是菜单2</li>
+		</ul>
+	</div>
+
+	<div class="btn_wrap">
+		<button id="longer">变长</button>
+		<button id="shortter">变短</button>
+	</div>
+
+	<script>
+		
+		/*增加或减少菜单*/
+		$(".btn_wrap").click(function(event) {
+			var target = event.target,index = $(".nav_li").length,html="";
+			if(target.id == 'longer'){
+				for (var i = 0; i < 5; i++) {
+					html = html + '<li class="nav_li">我是菜单'+ (index+i+1) +'</li>';
+				}
+				$(".nav_ul").append(html);
+			}else if(target.id = 'shortter'){
+				if(index>5){
+					$(".nav_li:gt("+(index-6)+")").remove();
+				}
+			}
+		});
+
+	</script>
+</body>
